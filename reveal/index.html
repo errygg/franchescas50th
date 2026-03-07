@@ -11,13 +11,15 @@
   body { font-family: 'Cormorant Garamond', Georgia, serif; background: #1a1520; color: white; touch-action: manipulation; -webkit-tap-highlight-color: transparent; user-select: none; }
   .slide { position: fixed; top: 0; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 40px 30px; opacity: 0; transform: scale(0.95); transition: opacity 0.6s ease, transform 0.6s ease; pointer-events: none; z-index: 1; }
   .slide.active { opacity: 1; transform: scale(1); pointer-events: auto; z-index: 10; }
-  .slide-0 { background: linear-gradient(155deg, #2C2233 0%, #3D2456 40%, #5B3A7A 100%); }
-  .slide-1 { background: linear-gradient(155deg, #1a2a3a 0%, #2a3a4a 40%, #3a4a5a 100%); }
-  .slide-2 { background: linear-gradient(155deg, #2C2233 0%, #5B3A7A 50%, #7B5A9A 100%); }
-  .slide-3 { background: linear-gradient(155deg, #1a2820 0%, #2a4838 40%, #3a6850 100%); }
-  .slide-4 { background: linear-gradient(155deg, #3a2210 0%, #5a3a20 40%, #7a5230 100%); }
-  .slide-5 { background: linear-gradient(155deg, #1a1a30 0%, #2a2a50 40%, #3a3a70 100%); }
-  .slide-6 { background: linear-gradient(155deg, #3D2456 0%, #5B3A7A 30%, #7B5A9A 60%, #9B7DB8 100%); }
+  .bg-0 { background: linear-gradient(155deg, #2C2233 0%, #3D2456 40%, #5B3A7A 100%); }
+  .bg-1 { background: linear-gradient(155deg, #1a2a3a 0%, #2a3a4a 40%, #3a4a5a 100%); }
+  .bg-2 { background: linear-gradient(155deg, #2C2233 0%, #5B3A7A 50%, #7B5A9A 100%); }
+  .bg-3 { background: linear-gradient(155deg, #3a1a2a 0%, #6a2a4a 40%, #8a3a5a 100%); }
+  .bg-4 { background: linear-gradient(155deg, #1a2820 0%, #2a4838 40%, #3a6850 100%); }
+  .bg-5 { background: linear-gradient(155deg, #3a2210 0%, #5a3a20 40%, #7a5230 100%); }
+  .bg-6 { background: linear-gradient(155deg, #2a1a2a 0%, #4a2a4a 40%, #6a3a6a 100%); }
+  .bg-7 { background: linear-gradient(155deg, #1a1a30 0%, #2a2a50 40%, #3a3a70 100%); }
+  .bg-8 { background: linear-gradient(155deg, #3D2456 0%, #5B3A7A 30%, #7B5A9A 60%, #9B7DB8 100%); }
   .slide-emoji { font-size: 72px; margin-bottom: 24px; display: block; }
   .slide.active .slide-emoji { animation: pop-in 0.5s ease 0.2s both; }
   @keyframes pop-in { 0% { transform: scale(0); opacity: 0; } 50% { transform: scale(1.2); } 100% { transform: scale(1); opacity: 1; } }
@@ -48,49 +50,63 @@
 <body>
 <div class="progress" id="progress"></div>
 
-<div class="slide slide-0 active" data-slide="0">
+<div class="slide bg-0 active" data-slide="0">
   <span class="slide-emoji">💜</span>
   <div class="slide-pretitle">A Surprise For</div>
   <div class="slide-title">Franchesca</div>
   <div class="slide-body">Before your Cincuentañera,<br>you deserve to be treated<br>like the queen you are.</div>
 </div>
 
-<div class="slide slide-1" data-slide="1">
+<div class="slide bg-1" data-slide="1">
   <span class="slide-emoji">🚗</span>
   <div class="slide-pretitle">Friday, April 24th</div>
   <div class="slide-title">Your Ride Awaits</div>
   <div class="slide-body">A private car will pick you up<br>and whisk you away downtown.<br>No driving. No stress.<br>Just sit back and enjoy.</div>
 </div>
 
-<div class="slide slide-2" data-slide="2">
+<div class="slide bg-2" data-slide="2">
   <span class="slide-emoji">🏨</span>
   <div class="slide-pretitle">Your Destination</div>
   <div class="slide-title">The Brown Palace<br>Hotel &amp; Spa</div>
   <div class="slide-body">Denver's most iconic hotel.<br>An overnight escape<br>just for you.<br>Pack a bag, mi reina.</div>
 </div>
 
-<div class="slide slide-3" data-slide="3">
+<div class="slide bg-3" data-slide="3">
+  <span class="slide-emoji">👯‍♀️</span>
+  <div class="slide-pretitle">Oh, and One More Thing</div>
+  <div class="slide-title">You Won't Be Alone</div>
+  <div class="slide-body">Caressa, Steph &amp; Eileen<br>are coming with you.<br>Drinks, laughs, and a night<br>with your favorite people.</div>
+</div>
+
+<div class="slide bg-4" data-slide="4">
   <span class="slide-emoji">💆‍♀️</span>
-  <div class="slide-pretitle">Friday Evening</div>
+  <div class="slide-pretitle">Friday Afternoon</div>
   <div class="slide-title">Spa Time</div>
   <div class="slide-body">Your choice of treatments —<br>massage, facial, body wrap,<br>whatever your heart desires.<br>This is your time.</div>
 </div>
 
-<div class="slide slide-4" data-slide="4">
+<div class="slide bg-5" data-slide="5">
+  <span class="slide-emoji">🍽️</span>
+  <div class="slide-pretitle">Friday Evening</div>
+  <div class="slide-title">Dinner at<br>Palace Arms</div>
+  <div class="slide-body">The Brown Palace's finest.<br>An incredible dinner with<br>your girls to kick off<br>your birthday weekend.</div>
+</div>
+
+<div class="slide bg-6" data-slide="6">
   <span class="slide-emoji">☀️</span>
   <div class="slide-pretitle">Saturday Morning</div>
   <div class="slide-title">Sleep In &amp; Brunch</div>
   <div class="slide-body">Wake up with no alarm.<br>No rush. No responsibilities.<br>Just a beautiful morning<br>before the big day.</div>
 </div>
 
-<div class="slide slide-5" data-slide="5">
+<div class="slide bg-7" data-slide="7">
   <span class="slide-emoji">💇‍♀️</span>
   <div class="slide-pretitle">Saturday Afternoon</div>
   <div class="slide-title">Hair &amp; Makeup</div>
   <div class="slide-body">A professional glam session<br>right at the hotel.<br>Then you slip into your dress...<br>and the car brings you home.</div>
 </div>
 
-<div class="slide slide-6 slide-final" data-slide="6">
+<div class="slide bg-8 slide-final" data-slide="8">
   <div class="hearts">
     <span class="heart">💜</span><span class="heart">✨</span>
     <span class="heart">💜</span><span class="heart">✨</span>
