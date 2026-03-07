@@ -1,0 +1,2 @@
+          <div class="timeline-title">Cake &amp; Celebration</div>
+          <div class="timeline-desc">A beautiful tiered cincuentañera cake — because a milestone this big deserves a showstopper.</div>
