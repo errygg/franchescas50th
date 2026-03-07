@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>A Surprise for Franchesca</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; overflow: hidden; }
+  body { font-family: 'Cormorant Garamond', Georgia, serif; background: #1a1520; color: white; touch-action: manipulation; -webkit-tap-highlight-color: transparent; user-select: none; }
+  .slide { position: fixed; top: 0; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 40px 30px; opacity: 0; transform: scale(0.95); transition: opacity 0.6s ease, transform 0.6s ease; pointer-events: none; z-index: 1; }
+  .slide.active { opacity: 1; transform: scale(1); pointer-events: auto; z-index: 10; }
+  .slide-0 { background: linear-gradient(155deg, #2C2233 0%, #3D2456 40%, #5B3A7A 100%); }
+  .slide-1 { background: linear-gradient(155deg, #1a2a3a 0%, #2a3a4a 40%, #3a4a5a 100%); }
+  .slide-2 { background: linear-gradient(155deg, #2C2233 0%, #5B3A7A 50%, #7B5A9A 100%); }
+  .slide-3 { background: linear-gradient(155deg, #1a2820 0%, #2a4838 40%, #3a6850 100%); }
+  .slide-4 { background: linear-gradient(155deg, #3a2210 0%, #5a3a20 40%, #7a5230 100%); }
+  .slide-5 { background: linear-gradient(155deg, #1a1a30 0%, #2a2a50 40%, #3a3a70 100%); }
+  .slide-6 { background: linear-gradient(155deg, #3D2456 0%, #5B3A7A 30%, #7B5A9A 60%, #9B7DB8 100%); }
+  .slide-emoji { font-size: 72px; margin-bottom: 24px; display: block; }
+  .slide.active .slide-emoji { animation: pop-in 0.5s ease 0.2s both; }
+  @keyframes pop-in { 0% { transform: scale(0); opacity: 0; } 50% { transform: scale(1.2); } 100% { transform: scale(1); opacity: 1; } }
+  .slide-pretitle { font-family: 'Cormorant Garamond', serif; color: rgba(255,255,255,0.5); font-size: 12px; letter-spacing: 5px; text-transform: uppercase; font-weight: 300; margin-bottom: 8px; }
+  .slide.active .slide-pretitle { animation: fade-up 0.5s ease 0.3s both; }
+  .slide-title { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; line-height: 1.2; margin-bottom: 16px; color: white; }
+  .slide.active .slide-title { animation: fade-up 0.5s ease 0.4s both; }
+  .slide-body { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 300; line-height: 1.7; color: rgba(255,255,255,0.8); max-width: 320px; margin-bottom: 24px; }
+  .slide.active .slide-body { animation: fade-up 0.5s ease 0.5s both; }
+  @keyframes fade-up { 0% { transform: translateY(20px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+  .tap-hint { position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%); font-family: 'Cormorant Garamond', serif; color: rgba(255,255,255,0.3); font-size: 13px; letter-spacing: 3px; text-transform: uppercase; z-index: 100; animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.6; } }
+  .progress { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 100; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.2); transition: background 0.3s, transform 0.3s; }
+  .dot.active { background: #D4AF37; transform: scale(1.3); }
+  .slide-final .slide-title { font-size: 36px; color: #D4AF37; }
+  .hearts { position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; overflow: hidden; }
+  .heart { position: absolute; font-size: 24px; opacity: 0; animation: float-heart 4s ease-in-out infinite; }
+  .heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+  .heart:nth-child(2) { left: 25%; animation-delay: 0.8s; }
+  .heart:nth-child(3) { left: 45%; animation-delay: 1.6s; }
+  .heart:nth-child(4) { left: 65%; animation-delay: 0.4s; }
+  .heart:nth-child(5) { left: 80%; animation-delay: 1.2s; }
+  .heart:nth-child(6) { left: 90%; animation-delay: 2s; }
+  @keyframes float-heart { 0% { transform: translateY(100vh) rotate(0deg); opacity: 0; } 10% { opacity: 0.8; } 90% { opacity: 0.3; } 100% { transform: translateY(-10vh) rotate(45deg); opacity: 0; } }
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<div class="slide slide-0 active" data-slide="0">
+  <span class="slide-emoji">💜</span>
+  <div class="slide-pretitle">A Surprise For</div>
+  <div class="slide-title">Franchesca</div>
+  <div class="slide-body">Before your Cincuentañera,<br>you deserve to be treated<br>like the queen you are.</div>
+</div>
+
+<div class="slide slide-1" data-slide="1">
+  <span class="slide-emoji">🚗</span>
+  <div class="slide-pretitle">Friday, April 24th</div>
+  <div class="slide-title">Your Ride Awaits</div>
+  <div class="slide-body">A private car will pick you up<br>and whisk you away downtown.<br>No driving. No stress.<br>Just sit back and enjoy.</div>
+</div>
+
+<div class="slide slide-2" data-slide="2">
+  <span class="slide-emoji">🏨</span>
+  <div class="slide-pretitle">Your Destination</div>
+  <div class="slide-title">The Brown Palace<br>Hotel &amp; Spa</div>
+  <div class="slide-body">Denver's most iconic hotel.<br>An overnight escape<br>just for you.<br>Pack a bag, mi reina.</div>
+</div>
+
+<div class="slide slide-3" data-slide="3">
+  <span class="slide-emoji">💆‍♀️</span>
+  <div class="slide-pretitle">Friday Evening</div>
+  <div class="slide-title">Spa Time</div>
+  <div class="slide-body">Your choice of treatments —<br>massage, facial, body wrap,<br>whatever your heart desires.<br>This is your time.</div>
+</div>
+
+<div class="slide slide-4" data-slide="4">
+  <span class="slide-emoji">☀️</span>
+  <div class="slide-pretitle">Saturday Morning</div>
+  <div class="slide-title">Sleep In &amp; Brunch</div>
+  <div class="slide-body">Wake up with no alarm.<br>No rush. No responsibilities.<br>Just a beautiful morning<br>before the big day.</div>
+</div>
+
+<div class="slide slide-5" data-slide="5">
+  <span class="slide-emoji">💇‍♀️</span>
+  <div class="slide-pretitle">Saturday Afternoon</div>
+  <div class="slide-title">Hair &amp; Makeup</div>
+  <div class="slide-body">A professional glam session<br>right at the hotel.<br>Then you slip into your dress...<br>and the car brings you home.</div>
+</div>
+
+<div class="slide slide-6 slide-final" data-slide="6">
+  <div class="hearts">
+    <span class="heart">💜</span><span class="heart">✨</span>
+    <span class="heart">💜</span><span class="heart">✨</span>
+    <span class="heart">💜</span><span class="heart">✨</span>
+  </div>
+  <span class="slide-emoji">👑</span>
+  <div class="slide-pretitle">And Then</div>
+  <div class="slide-title">Your Cincuentañera<br>Begins</div>
+  <div class="slide-body">You walk through that door,<br>down those stairs,<br>and into the celebration<br>you deserve.</div>
+  <div class="slide-body" style="color: #D4AF37; font-style: italic; font-size: 18px; margin-top: 8px;">Happy 50th, my love.<br>— Erik ❤️</div>
+</div>
+
+<div class="tap-hint" id="tap-hint">Tap to continue</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const totalSlides = slides.length;
+  let current = 0;
+  const progress = document.getElementById('progress');
+  for (let i = 0; i < totalSlides; i++) { const dot = document.createElement('div'); dot.className = 'dot' + (i === 0 ? ' active' : ''); progress.appendChild(dot); }
+  const dots = document.querySelectorAll('.dot');
+  function goTo(index) { if (index < 0 || index >= totalSlides) return; slides[current].classList.remove('active'); dots[current].classList.remove('active'); current = index; slides[current].classList.add('active'); dots[current].classList.add('active'); if (current === totalSlides - 1) document.getElementById('tap-hint').style.display = 'none'; }
+  document.body.addEventListener('click', () => { if (current < totalSlides - 1) goTo(current + 1); });
+  let touchStartY = 0, touchStartX = 0;
+  document.body.addEventListener('touchstart', (e) => { touchStartY = e.touches[0].clientY; touchStartX = e.touches[0].clientX; });
+  document.body.addEventListener('touchend', (e) => { const dY = touchStartY - e.changedTouches[0].clientY; const dX = touchStartX - e.changedTouches[0].clientX; if (Math.abs(dY) > 50 || Math.abs(dX) > 50) { if (dY > 50 || dX > 50) goTo(current + 1); else goTo(current - 1); } });
+  document.addEventListener('keydown', (e) => { if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') goTo(current + 1); if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') goTo(current - 1); });
+</script>
+</body>
+</html>
