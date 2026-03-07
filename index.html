@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Join us to celebrate Franchesca's fabulous 50th birthday!" />
+  <title>Franchesca's Fabulous 50th 🎉</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Floating confetti canvas -->
+  <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+  <!-- ═══════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════ -->
+  <header class="hero">
+    <div class="balloons" aria-hidden="true">🎈 🎂 🎈</div>
+
+    <div class="hero-badge">Celebrating 50 Years of Fabulousness</div>
+
+    <h1>
+      <span>Franchesca's</span>
+      Fabulous 50th
+    </h1>
+
+    <p class="hero-subtitle">
+      Half a century of grace, laughter &amp; love — and we're just getting started!
+    </p>
+
+    <!-- Countdown -->
+    <div class="countdown-wrapper" aria-label="Countdown to the party">
+      <p class="countdown-label">Party Starts In</p>
+      <div class="countdown" id="countdown">
+        <div class="countdown-unit">
+          <span class="countdown-number" id="cd-days">--</span>
+          <span class="countdown-text">Days</span>
+        </div>
+        <div class="countdown-unit">
+          <span class="countdown-number" id="cd-hours">--</span>
+          <span class="countdown-text">Hours</span>
+        </div>
+        <div class="countdown-unit">
+          <span class="countdown-number" id="cd-minutes">--</span>
+          <span class="countdown-text">Mins</span>
+        </div>
+        <div class="countdown-unit">
+          <span class="countdown-number" id="cd-seconds">--</span>
+          <span class="countdown-text">Secs</span>
+        </div>
+      </div>
+    </div>
+
+    <a class="hero-cta" href="#rsvp">RSVP Now &nbsp;💌</a>
+  </header>
+
+  <div class="divider" aria-hidden="true">✦ ✦ ✦</div>
+
+  <!-- ═══════════════════════════════════════════
+       EVENT DETAILS
+  ═══════════════════════════════════════════ -->
+  <section id="details">
+    <div class="section-inner">
+      <h2 class="section-title">
+        <span class="section-title-emoji" aria-hidden="true">📋</span>
+        Party Details
+      </h2>
+      <p class="section-subtitle">Everything you need to know for the big night</p>
+
+      <div class="details-grid">
+
+        <div class="detail-card">
+          <span class="icon" aria-hidden="true">📅</span>
+          <h3>Date</h3>
+          <p>Saturday, June 6, 2026</p>
+        </div>
+
+        <div class="detail-card">
+          <span class="icon" aria-hidden="true">🕕</span>
+          <h3>Time</h3>
+          <p>6:00 PM – Midnight</p>
+        </div>
+
+        <div class="detail-card">
+          <span class="icon" aria-hidden="true">📍</span>
+          <h3>Location</h3>
+          <p>
+            TBD<br />
+            <small style="opacity:0.6;">(Details coming soon)</small>
+          </p>
+        </div>
+
+        <div class="detail-card">
+          <span class="icon" aria-hidden="true">👗</span>
+          <h3>Dress Code</h3>
+          <p>Cocktail Attire<br /><small style="opacity:0.6;">Black &amp; Gold encouraged!</small></p>
+        </div>
+
+        <div class="detail-card">
+          <span class="icon" aria-hidden="true">🎁</span>
+          <h3>Gifts</h3>
+          <p>Your presence is the greatest present — but if you must, a card is always cherished.</p>
+        </div>
+
+        <div class="detail-card">
+          <span class="icon" aria-hidden="true">🍽️</span>
+          <h3>Food &amp; Drinks</h3>
+          <p>Dinner &amp; cocktails provided. Please note any dietary needs when you RSVP.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true">✦ ✦ ✦</div>
+
+  <!-- ═══════════════════════════════════════════
+       MESSAGE
+  ═══════════════════════════════════════════ -->
+  <section id="message">
+    <div class="section-inner">
+      <h2 class="section-title">
+        <span class="section-title-emoji" aria-hidden="true">💛</span>
+        A Message from the Family
+      </h2>
+      <p class="section-subtitle">With all our love</p>
+
+      <div class="message-box">
+        <p>
+          Franchesca — there are no words big enough to describe how much joy you bring
+          to everyone around you. Fifty years of kindness, warmth, and infectious laughter.
+          Fifty years of being the heart of every room you walk into.
+        </p>
+        <p>
+          We're throwing this party because you deserve nothing less than a celebration
+          as spectacular as you are. Come ready to dance, laugh until it hurts, and
+          make memories we'll talk about for the next fifty years.
+        </p>
+        <p>
+          Here's to you, Franchesca — Happy 50th! 🥂
+        </p>
+        <p class="message-signature">— With endless love, your family &amp; friends 💛</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true">✦ ✦ ✦</div>
+
+  <!-- ═══════════════════════════════════════════
+       RSVP
+  ═══════════════════════════════════════════ -->
+  <section id="rsvp">
+    <div class="section-inner">
+      <h2 class="section-title">
+        <span class="section-title-emoji" aria-hidden="true">💌</span>
+        RSVP
+      </h2>
+      <p class="section-subtitle">Please respond by May 15, 2026</p>
+
+      <form class="rsvp-form" id="rsvp-form" novalidate>
+        <div class="form-group">
+          <label for="rsvp-name">Your Name(s)</label>
+          <input
+            type="text"
+            id="rsvp-name"
+            name="name"
+            placeholder="e.g. Jane &amp; John Smith"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="rsvp-attending">Will you attend?</label>
+          <select id="rsvp-attending" name="attending" required>
+            <option value="" disabled selected>– Please select –</option>
+            <option value="yes">🎉 Yes, I'll be there!</option>
+            <option value="no">😢 Sorry, I can't make it</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="rsvp-guests">Number of guests (including yourself)</label>
+          <select id="rsvp-guests" name="guests">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5+">5+</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="rsvp-dietary">Dietary requirements</label>
+          <input
+            type="text"
+            id="rsvp-dietary"
+            name="dietary"
+            placeholder="e.g. vegetarian, gluten-free…"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="rsvp-message">Leave a birthday message 🎂</label>
+          <textarea
+            id="rsvp-message"
+            name="message"
+            placeholder="Wish Franchesca a Happy 50th!"
+          ></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Send RSVP &nbsp;🥂</button>
+      </form>
+
+      <div class="form-success" id="form-success">
+        🎊 Thank you! Your RSVP has been received.<br />
+        We can't wait to celebrate with you!
+      </div>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true">✦ ✦ ✦</div>
+
+  <!-- ═══════════════════════════════════════════
+       GALLERY PLACEHOLDER
+  ═══════════════════════════════════════════ -->
+  <section id="gallery">
+    <div class="section-inner">
+      <h2 class="section-title">
+        <span class="section-title-emoji" aria-hidden="true">📸</span>
+        Photo Gallery
+      </h2>
+      <p class="section-subtitle">Memories coming soon — check back after the party!</p>
+
+      <div class="gallery-grid" aria-label="Photo gallery placeholder">
+        <div class="gallery-item"><span aria-hidden="true">📷</span>Photo coming soon</div>
+        <div class="gallery-item"><span aria-hidden="true">📷</span>Photo coming soon</div>
+        <div class="gallery-item"><span aria-hidden="true">📷</span>Photo coming soon</div>
+        <div class="gallery-item"><span aria-hidden="true">📷</span>Photo coming soon</div>
+        <div class="gallery-item"><span aria-hidden="true">📷</span>Photo coming soon</div>
+        <div class="gallery-item"><span aria-hidden="true">📷</span>Photo coming soon</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════ -->
+  <footer>
+    <p>
+      Made with <span class="heart">♥</span> for
+      <strong>Franchesca's Fabulous 50th</strong> &nbsp;|&nbsp; 2026
+    </p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
