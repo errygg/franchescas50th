@@ -1,6 +1,3 @@
 {
-  "version": 2,
-  "redirects": [
-    { "source": "/(.*)", "destination": "https://live.franchescas50th.com", "permanent": false }
-  ]
+  "version": 2
 }

@@ -1,10 +1,210 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta http-equiv="refresh" content="0;url=https://live.franchescas50th.com">
-  <title>Redirecting...</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Franchesca's Cincuentañera</title>
+  <meta name="description" content="Photos and messages from Franchesca's Cincuentañera celebration.">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --lavender: #9B72CF;
+      --lavender-light: #C4A6E8;
+      --purple-deep: #5B2D8E;
+      --gold: #D4A843;
+      --white: #FEFCFF;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(160deg, #1a0a2e 0%, #2d1052 40%, #1a0a2e 100%);
+      min-height: 100vh;
+      color: var(--white);
+    }
+
+    .container {
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 24px 20px 40px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+
+    .header .subtitle {
+      font-size: 13px;
+      color: var(--lavender-light);
+      font-weight: 300;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .header .divider {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 12px auto;
+      opacity: 0.5;
+    }
+
+    .stats {
+      text-align: center;
+      margin-bottom: 24px;
+      font-size: 13px;
+      color: rgba(196, 166, 232, 0.6);
+    }
+
+    .thank-you {
+      text-align: center;
+      margin-bottom: 24px;
+      padding: 16px;
+      border-radius: 12px;
+      background: rgba(155,114,207,0.1);
+      border: 1px solid rgba(155,114,207,0.2);
+    }
+
+    .thank-you p {
+      font-size: 15px;
+      color: var(--lavender-light);
+      line-height: 1.5;
+    }
+
+    .feed-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(155, 114, 207, 0.2);
+      border-radius: 14px;
+      margin-bottom: 14px;
+      overflow: hidden;
+    }
+
+    .feed-card img {
+      width: 100%;
+      display: block;
+    }
+
+    .feed-card-body {
+      padding: 12px 14px;
+    }
+
+    .feed-card-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+
+    .feed-card-message {
+      font-size: 14px;
+      color: rgba(255,255,255,0.8);
+      font-style: italic;
+      line-height: 1.4;
+    }
+
+    .feed-card-time {
+      font-size: 11px;
+      color: rgba(196, 166, 232, 0.4);
+      margin-top: 6px;
+    }
+
+    .feed-card-comment {
+      padding: 20px 18px;
+    }
+
+    .feed-card-comment .feed-card-message {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 40px 0;
+      color: var(--lavender-light);
+      font-size: 14px;
+    }
+  </style>
 </head>
 <body>
-  <p>Redirecting to <a href="https://live.franchescas50th.com">live.franchescas50th.com</a>...</p>
+  <div class="container">
+    <div class="header">
+      <h1>Franchesca</h1>
+      <div class="divider"></div>
+      <div class="subtitle">Cincuentañera</div>
+    </div>
+
+    <div class="thank-you">
+      <p>Thank you to everyone who celebrated with us! Here are all the photos and messages from the night.</p>
+    </div>
+
+    <div class="stats" id="stats"></div>
+    <div id="feed-list"></div>
+    <div class="loading" id="loading">Loading photos...</div>
+  </div>
+
+  <script>
+    function escapeHtml(str) {
+      if (!str) return '';
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
+    function formatDate(dateStr) {
+      const d = new Date(dateStr);
+      return d.toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true });
+    }
+
+    function renderFeedCard(post) {
+      if (post.type === 'photo') {
+        const hasBody = post.name || post.message;
+        return `<div class="feed-card">
+          <img src="${post.photo}" alt="Photo" loading="lazy">
+          ${hasBody ? `<div class="feed-card-body">
+            ${post.name ? `<div class="feed-card-name">${escapeHtml(post.name)}</div>` : ''}
+            ${post.message ? `<div class="feed-card-message">"${escapeHtml(post.message)}"</div>` : ''}
+            <div class="feed-card-time">${formatDate(post.created_at)}</div>
+          </div>` : `<div class="feed-card-body"><div class="feed-card-time">${formatDate(post.created_at)}</div></div>`}
+        </div>`;
+      } else {
+        return `<div class="feed-card">
+          <div class="feed-card-comment">
+            ${post.name ? `<div class="feed-card-name">${escapeHtml(post.name)}</div>` : ''}
+            <div class="feed-card-message">"${escapeHtml(post.message)}"</div>
+            <div class="feed-card-time">${formatDate(post.created_at)}</div>
+          </div>
+        </div>`;
+      }
+    }
+
+    async function loadFeed() {
+      try {
+        const res = await fetch('/data/posts.json');
+        const posts = await res.json();
+
+        const photos = posts.filter(p => p.type === 'photo').length;
+        const comments = posts.filter(p => p.type === 'comment').length;
+        document.getElementById('stats').textContent = `${photos} photos \u00b7 ${comments} messages`;
+
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('feed-list').innerHTML = posts.map(renderFeedCard).join('');
+      } catch (err) {
+        document.getElementById('loading').textContent = 'Failed to load. Please try again.';
+      }
+    }
+
+    loadFeed();
+  </script>
 </body>
 </html>
